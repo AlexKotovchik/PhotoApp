@@ -7,18 +7,55 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E737E02D27E7E6B1007067AD /* PhotoCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E737E02C27E7E6B1007067AD /* PhotoCarouselView.swift */; };
+		E737E02F27E7E6C6007067AD /* PhotoCarouselViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E737E02E27E7E6C6007067AD /* PhotoCarouselViewModel.swift */; };
+		E74AA63727E5068D00733319 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74AA63627E5068D00733319 /* GalleryView.swift */; };
+		E74AA63A27E506A500733319 /* GalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74AA63927E506A500733319 /* GalleryViewModel.swift */; };
+		E74AA63D27E5152300733319 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74AA63C27E5152300733319 /* Photo.swift */; };
+		E787F7E827E52F0500540F06 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E787F7E727E52F0500540F06 /* Storage.swift */; };
+		E787F7EA27E5502400540F06 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E787F7E927E5502400540F06 /* ImagePicker.swift */; };
 		E7AC19D027E29D13003B9407 /* PhotoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AC19CF27E29D13003B9407 /* PhotoApp.swift */; };
 		E7AC19D227E29D13003B9407 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AC19D127E29D13003B9407 /* ContentView.swift */; };
 		E7AC19D427E29D15003B9407 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7AC19D327E29D15003B9407 /* Assets.xcassets */; };
 		E7AC19D727E29D15003B9407 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7AC19D627E29D15003B9407 /* Preview Assets.xcassets */; };
+		E7AC19E027E2A14B003B9407 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AC19DF27E2A14B003B9407 /* LoginView.swift */; };
+		E7AC19E227E2A15A003B9407 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AC19E127E2A15A003B9407 /* LoginViewModel.swift */; };
+		E7AC19E627E2AC39003B9407 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AC19E527E2AC39003B9407 /* Color+Extensions.swift */; };
+		E7AC19EA27E2B43D003B9407 /* PasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AC19E927E2B43D003B9407 /* PasswordField.swift */; };
+		E7AC19ED27E2B4C6003B9407 /* TextFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AC19EC27E2B4C6003B9407 /* TextFieldModifier.swift */; };
+		E7AC19F527E3D30D003B9407 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AC19F427E3D30D003B9407 /* RegisterView.swift */; };
+		E7AC19F727E3D36B003B9407 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AC19F627E3D36B003B9407 /* RegisterViewModel.swift */; };
+		E7AC19F927E3F932003B9407 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AC19F827E3F932003B9407 /* String+Extensions.swift */; };
+		E7AC1A0127E40447003B9407 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E7AC1A0327E40447003B9407 /* Localizable.strings */; };
+		E7AC1A0627E409D6003B9407 /* LoginFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AC1A0527E409D5003B9407 /* LoginFields.swift */; };
+		E7AC1A0827E40C54003B9407 /* AcceptButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AC1A0727E40C54003B9407 /* AcceptButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E737E02C27E7E6B1007067AD /* PhotoCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCarouselView.swift; sourceTree = "<group>"; };
+		E737E02E27E7E6C6007067AD /* PhotoCarouselViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCarouselViewModel.swift; sourceTree = "<group>"; };
+		E74AA63627E5068D00733319 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
+		E74AA63927E506A500733319 /* GalleryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewModel.swift; sourceTree = "<group>"; };
+		E74AA63C27E5152300733319 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		E787F7E727E52F0500540F06 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		E787F7E927E5502400540F06 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		E7AC19CC27E29D13003B9407 /* PhotoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7AC19CF27E29D13003B9407 /* PhotoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoApp.swift; sourceTree = "<group>"; };
 		E7AC19D127E29D13003B9407 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E7AC19D327E29D15003B9407 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7AC19D627E29D15003B9407 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E7AC19DF27E2A14B003B9407 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		E7AC19E127E2A15A003B9407 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		E7AC19E527E2AC39003B9407 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
+		E7AC19E927E2B43D003B9407 /* PasswordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordField.swift; sourceTree = "<group>"; };
+		E7AC19EC27E2B4C6003B9407 /* TextFieldModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldModifier.swift; sourceTree = "<group>"; };
+		E7AC19F427E3D30D003B9407 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		E7AC19F627E3D36B003B9407 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		E7AC19F827E3F932003B9407 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		E7AC1A0227E40447003B9407 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E7AC1A0427E4044A003B9407 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E7AC1A0527E409D5003B9407 /* LoginFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFields.swift; sourceTree = "<group>"; };
+		E7AC1A0727E40C54003B9407 /* AcceptButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +69,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E737E02B27E7E680007067AD /* PhotoCarousel */ = {
+			isa = PBXGroup;
+			children = (
+				E737E02C27E7E6B1007067AD /* PhotoCarouselView.swift */,
+				E737E02E27E7E6C6007067AD /* PhotoCarouselViewModel.swift */,
+			);
+			path = PhotoCarousel;
+			sourceTree = "<group>";
+		};
+		E74AA63527E5067C00733319 /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				E737E02B27E7E680007067AD /* PhotoCarousel */,
+				E74AA63827E5069500733319 /* GalleryView */,
+			);
+			path = Gallery;
+			sourceTree = "<group>";
+		};
+		E74AA63827E5069500733319 /* GalleryView */ = {
+			isa = PBXGroup;
+			children = (
+				E74AA63627E5068D00733319 /* GalleryView.swift */,
+				E74AA63927E506A500733319 /* GalleryViewModel.swift */,
+			);
+			path = GalleryView;
+			sourceTree = "<group>";
+		};
+		E74AA63B27E5150D00733319 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E74AA63C27E5152300733319 /* Photo.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E74AA63E27E52E3300733319 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				E787F7E727E52F0500540F06 /* Storage.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
 		E7AC19C327E29D13003B9407 = {
 			isa = PBXGroup;
 			children = (
@@ -51,9 +131,15 @@
 		E7AC19CE27E29D13003B9407 /* PhotoApp */ = {
 			isa = PBXGroup;
 			children = (
+				E74AA63E27E52E3300733319 /* Storage */,
+				E74AA63B27E5150D00733319 /* Models */,
+				E7AC19EB27E2B4A5003B9407 /* Modifiers */,
+				E7AC19E827E2B411003B9407 /* UI */,
+				E7AC19E727E2B400003B9407 /* UIComponents */,
+				E7AC19E327E2AC15003B9407 /* Utils */,
+				E7AC19FA27E3F94C003B9407 /* Resources */,
 				E7AC19CF27E29D13003B9407 /* PhotoApp.swift */,
 				E7AC19D127E29D13003B9407 /* ContentView.swift */,
-				E7AC19D327E29D15003B9407 /* Assets.xcassets */,
 				E7AC19D527E29D15003B9407 /* Preview Content */,
 			);
 			path = PhotoApp;
@@ -65,6 +151,87 @@
 				E7AC19D627E29D15003B9407 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E7AC19DD27E2A11C003B9407 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				E7AC19DE27E2A131003B9407 /* LoginView */,
+				E7AC19F327E3D2F9003B9407 /* RegisterView */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		E7AC19DE27E2A131003B9407 /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				E7AC19DF27E2A14B003B9407 /* LoginView.swift */,
+				E7AC19E127E2A15A003B9407 /* LoginViewModel.swift */,
+			);
+			path = LoginView;
+			sourceTree = "<group>";
+		};
+		E7AC19E327E2AC15003B9407 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E7AC19E427E2AC20003B9407 /* Extensions */,
+				E787F7E927E5502400540F06 /* ImagePicker.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		E7AC19E427E2AC20003B9407 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E7AC19E527E2AC39003B9407 /* Color+Extensions.swift */,
+				E7AC19F827E3F932003B9407 /* String+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E7AC19E727E2B400003B9407 /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				E7AC19E927E2B43D003B9407 /* PasswordField.swift */,
+				E7AC1A0527E409D5003B9407 /* LoginFields.swift */,
+				E7AC1A0727E40C54003B9407 /* AcceptButton.swift */,
+			);
+			path = UIComponents;
+			sourceTree = "<group>";
+		};
+		E7AC19E827E2B411003B9407 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				E74AA63527E5067C00733319 /* Gallery */,
+				E7AC19DD27E2A11C003B9407 /* Login */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		E7AC19EB27E2B4A5003B9407 /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				E7AC19EC27E2B4C6003B9407 /* TextFieldModifier.swift */,
+			);
+			path = Modifiers;
+			sourceTree = "<group>";
+		};
+		E7AC19F327E3D2F9003B9407 /* RegisterView */ = {
+			isa = PBXGroup;
+			children = (
+				E7AC19F427E3D30D003B9407 /* RegisterView.swift */,
+				E7AC19F627E3D36B003B9407 /* RegisterViewModel.swift */,
+			);
+			path = RegisterView;
+			sourceTree = "<group>";
+		};
+		E7AC19FA27E3F94C003B9407 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E7AC19D327E29D15003B9407 /* Assets.xcassets */,
+				E7AC1A0327E40447003B9407 /* Localizable.strings */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -109,6 +276,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = E7AC19C327E29D13003B9407;
 			productRefGroup = E7AC19CD27E29D13003B9407 /* Products */;
@@ -126,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7AC19D727E29D15003B9407 /* Preview Assets.xcassets in Resources */,
+				E7AC1A0127E40447003B9407 /* Localizable.strings in Resources */,
 				E7AC19D427E29D15003B9407 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,12 +306,41 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7AC19F927E3F932003B9407 /* String+Extensions.swift in Sources */,
+				E74AA63A27E506A500733319 /* GalleryViewModel.swift in Sources */,
+				E7AC1A0827E40C54003B9407 /* AcceptButton.swift in Sources */,
+				E787F7EA27E5502400540F06 /* ImagePicker.swift in Sources */,
+				E7AC19E627E2AC39003B9407 /* Color+Extensions.swift in Sources */,
+				E737E02D27E7E6B1007067AD /* PhotoCarouselView.swift in Sources */,
+				E7AC19EA27E2B43D003B9407 /* PasswordField.swift in Sources */,
+				E74AA63727E5068D00733319 /* GalleryView.swift in Sources */,
+				E7AC1A0627E409D6003B9407 /* LoginFields.swift in Sources */,
+				E7AC19E227E2A15A003B9407 /* LoginViewModel.swift in Sources */,
+				E7AC19E027E2A14B003B9407 /* LoginView.swift in Sources */,
+				E74AA63D27E5152300733319 /* Photo.swift in Sources */,
+				E7AC19ED27E2B4C6003B9407 /* TextFieldModifier.swift in Sources */,
+				E7AC19F527E3D30D003B9407 /* RegisterView.swift in Sources */,
 				E7AC19D227E29D13003B9407 /* ContentView.swift in Sources */,
+				E787F7E827E52F0500540F06 /* Storage.swift in Sources */,
+				E737E02F27E7E6C6007067AD /* PhotoCarouselViewModel.swift in Sources */,
+				E7AC19F727E3D36B003B9407 /* RegisterViewModel.swift in Sources */,
 				E7AC19D027E29D13003B9407 /* PhotoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E7AC1A0327E40447003B9407 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E7AC1A0227E40447003B9407 /* ru */,
+				E7AC1A0427E4044A003B9407 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		E7AC19D827E29D15003B9407 /* Debug */ = {
@@ -201,6 +399,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -254,6 +453,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -270,11 +470,13 @@
 				DEVELOPMENT_TEAM = 5YX78AXA2X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need to access your camera to take photos.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -299,11 +501,13 @@
 				DEVELOPMENT_TEAM = 5YX78AXA2X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need to access your camera to take photos.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -7,15 +7,26 @@
 
 import SwiftUI
 
+class ContentViewModel: ObservableObject {
+    @Published var isAuthenticated: Bool = Storage.shared.isAuthenticated
+}
+
 struct ContentView: View {
+    @StateObject var vm: ContentViewModel
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        if vm.isAuthenticated {
+            GalleryView()
+                .environmentObject(vm)
+        } else {
+            LoginView()
+                .environmentObject(vm)
+        }
+    }
+    
+    init() {
+        let vm = StateObject(wrappedValue: ContentViewModel())
+        _vm = vm
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}

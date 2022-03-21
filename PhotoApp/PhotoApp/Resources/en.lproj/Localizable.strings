@@ -1,0 +1,32 @@
+/* 
+  Localizable.strings
+  PhotoApp
+
+  Created by AlexKotov on 18.03.22.
+  
+*/
+
+// MARK: - Placeholders
+"username_ph"        = "User name";
+"password_ph"        = "Password";
+
+// MARK: - Buttons
+"login_btn"          = "Login";
+"register_btn"       = "Register";
+"ok_btn"             = "OK";
+
+// MARK: - Labels
+"account_lbl"        = "Don't have an account?";
+"register_lbl"       = "Register now";
+
+// MARK: - Alerts
+"register_alert_title"          = "Registered";
+"register_alert_message"        = "You have been registered successfully";
+
+// MARK: - Titles
+"register_view_title"           = "Register User";
+
+// MARK: - Errors
+"password_length_error"         = "Password should be not less than 8 characters";
+"user_exists_error"             = "User name already exists. Please try with another one.";
+"wrong_login_error"             = "Wrong login or password";
