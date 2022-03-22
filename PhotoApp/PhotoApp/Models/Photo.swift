@@ -10,10 +10,12 @@ import UIKit
 
 struct Photo: Identifiable, Codable {
     var id: String
-    var image: Data?
+    var image: Data
+    var description: String
     
-    init(image: UIImage) {
+    init(image: UIImage, description: String = "description") {
         self.id = UUID().uuidString
-        self.image = image.pngData()
+        self.image = image.pngData() ?? Data()
+        self.description = description
     }
 }

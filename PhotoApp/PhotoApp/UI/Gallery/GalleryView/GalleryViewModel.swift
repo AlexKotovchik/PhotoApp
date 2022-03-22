@@ -10,16 +10,18 @@ import SwiftUI
 import Combine
 
 class GalleryViewModel: ObservableObject {
-    @Published var photos: [Photo] = []
-//    [Photo(image:UIImage(named: "1")!),
-//                                      Photo(image:UIImage(named: "2")!),
-//                                      Photo(image:UIImage(named: "3")!),
-//                                      Photo(image:UIImage(named: "4")!),
-//                                      Photo(image:UIImage(named: "5")!)]
+    @Published var photos: [Photo] =
+    [Photo(image:UIImage(named: "1")!),
+                                      Photo(image:UIImage(named: "2")!),
+                                      Photo(image:UIImage(named: "3")!),
+                                      Photo(image:UIImage(named: "4")!),
+                                      Photo(image:UIImage(named: "5")!)]
     @Published var shouldShowImagePicker: Bool = false
     @Published var shouldShowDialog: Bool = false
     @Published var shouldShowCarouselView: Bool = false
     @Published var pickerSourceType: UIImagePickerController.SourceType = .photoLibrary
+    
+    @Published var selectedPhoto: Photo? 
     
     var photoColumnGrid = [GridItem(.flexible(), spacing: 2),
                            GridItem(.flexible(), spacing: 2),
@@ -28,7 +30,12 @@ class GalleryViewModel: ObservableObject {
     private let storage = Storage.shared
     
     init() {
-        getPhotos()
+//        getPhotos()
+        
+        $selectedPhoto
+            .receive(on: RunLoop.main)
+            .map { $0 != nil }
+            .assign(to: &$shouldShowCarouselView)
     }
     
     func getPhotos() {

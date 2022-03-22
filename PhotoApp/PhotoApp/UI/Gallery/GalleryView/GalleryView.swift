@@ -21,16 +21,13 @@ struct GalleryView: View {
                             ForEach(vm.photos) { photo in
                                 if let imageData = photo.image,
                                    let uiimage = UIImage(data: imageData) {
-                                    NavigationLink(destination: PhotoCarouselView()) {
-                                        Image(uiImage: uiimage)
-                                            .resizable()
-                                            .aspectRatio(1, contentMode: .fill)
-                                            .clipped()
-                                            .onTapGesture {
-//                                                vm.shouldShowCarouselView = true
-                                            }
-                                    }
-                                   
+                                    Image(uiImage: uiimage)
+                                        .resizable()
+                                        .aspectRatio(1, contentMode: .fill)
+                                        .clipped()
+                                        .onTapGesture {
+                                            vm.selectedPhoto = photo
+                                        }
                                 }
                             }
                         }
@@ -46,6 +43,9 @@ struct GalleryView: View {
                 .frame(maxWidth: .infinity)
                 .background(Color.gray)
                 
+                NavigationLink(destination: PhotoCarouselView(photos: vm.photos, selectedPhoto: vm.selectedPhoto ?? Photo(image: UIImage())), isActive: $vm.shouldShowCarouselView) {
+                    EmptyView()
+                }
             }
             .fullScreenCover(isPresented: $vm.shouldShowImagePicker) {
                 ImagePicker(sourceType: vm.pickerSourceType) { image in
@@ -65,11 +65,8 @@ struct GalleryView: View {
             .navigationBarTitle("My photos")
             .navigationBarItems(trailing: logoutButton)
             
-//            NavigationLink(destination: PhotoCarouselView(), isActive: $vm.shouldShowCarouselView) {
-//                EmptyView()
-//            }
-            
         }
+        .accentColor(Color.backButtonForeground)
     }
     
     init() {
