@@ -19,13 +19,16 @@ struct GalleryView: View {
                     VStack {
                         LazyVGrid(columns: vm.photoColumnGrid, alignment: .leading, spacing: 2) {
                             ForEach(vm.photos) { photo in
-                                Image(uiImage: photo.image)
-                                    .resizable()
-                                    .aspectRatio(1, contentMode: .fill)
-                                    .clipped()
-                                    .onTapGesture {
-                                        vm.selectedPhoto = photo
-                                    }
+                                NavigationLink(destination: PhotoCarouselView(photos: vm.photos, selectedPhoto: photo)) {
+                                    Image(uiImage: photo.image)
+                                        .resizable()
+                                        .aspectRatio(1, contentMode: .fill)
+                                        .clipped()
+//                                        .onTapGesture {
+//                                            vm.selectedPhoto = photo
+//                                        }
+                                }
+ 
                             }
                         }
                     }
@@ -40,11 +43,11 @@ struct GalleryView: View {
                 .frame(maxWidth: .infinity)
                 .background(Color.gray)
                 
-                if let selectedPhoto = vm.selectedPhoto {
-                    NavigationLink(destination: PhotoCarouselView(photos: vm.photos, selectedPhoto: selectedPhoto), isActive: $vm.shouldShowCarouselView) {
-                        EmptyView()
-                    }
-                }
+//                if let selectedPhoto = vm.selectedPhoto {
+//                    NavigationLink(destination: PhotoCarouselView(photos: vm.photos, selectedPhoto: selectedPhoto), isActive: $vm.shouldShowCarouselView) {
+//                        EmptyView()
+//                    }
+//                }
             }
             .onDisappear {
                 vm.savePhotos()
