@@ -9,9 +9,10 @@
 /* Begin PBXBuildFile section */
 		E737E02D27E7E6B1007067AD /* PhotoCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E737E02C27E7E6B1007067AD /* PhotoCarouselView.swift */; };
 		E737E02F27E7E6C6007067AD /* PhotoCarouselViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E737E02E27E7E6C6007067AD /* PhotoCarouselViewModel.swift */; };
+		E737E03B27EAA417007067AD /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E737E03A27EAA417007067AD /* Photo.swift */; };
 		E74AA63727E5068D00733319 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74AA63627E5068D00733319 /* GalleryView.swift */; };
 		E74AA63A27E506A500733319 /* GalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74AA63927E506A500733319 /* GalleryViewModel.swift */; };
-		E74AA63D27E5152300733319 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74AA63C27E5152300733319 /* Photo.swift */; };
+		E74AA63D27E5152300733319 /* StoredPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74AA63C27E5152300733319 /* StoredPhoto.swift */; };
 		E787F7E827E52F0500540F06 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E787F7E727E52F0500540F06 /* Storage.swift */; };
 		E787F7EA27E5502400540F06 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E787F7E927E5502400540F06 /* ImagePicker.swift */; };
 		E7AC19D027E29D13003B9407 /* PhotoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AC19CF27E29D13003B9407 /* PhotoApp.swift */; };
@@ -34,9 +35,10 @@
 /* Begin PBXFileReference section */
 		E737E02C27E7E6B1007067AD /* PhotoCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCarouselView.swift; sourceTree = "<group>"; };
 		E737E02E27E7E6C6007067AD /* PhotoCarouselViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCarouselViewModel.swift; sourceTree = "<group>"; };
+		E737E03A27EAA417007067AD /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		E74AA63627E5068D00733319 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
 		E74AA63927E506A500733319 /* GalleryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewModel.swift; sourceTree = "<group>"; };
-		E74AA63C27E5152300733319 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		E74AA63C27E5152300733319 /* StoredPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredPhoto.swift; sourceTree = "<group>"; };
 		E787F7E727E52F0500540F06 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		E787F7E927E5502400540F06 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		E7AC19CC27E29D13003B9407 /* PhotoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,7 +101,8 @@
 		E74AA63B27E5150D00733319 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E74AA63C27E5152300733319 /* Photo.swift */,
+				E74AA63C27E5152300733319 /* StoredPhoto.swift */,
+				E737E03A27EAA417007067AD /* Photo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				E74AA63A27E506A500733319 /* GalleryViewModel.swift in Sources */,
 				E7AC1A0827E40C54003B9407 /* AcceptButton.swift in Sources */,
 				E787F7EA27E5502400540F06 /* ImagePicker.swift in Sources */,
+				E737E03B27EAA417007067AD /* Photo.swift in Sources */,
 				E7AC19E627E2AC39003B9407 /* Color+Extensions.swift in Sources */,
 				E737E02D27E7E6B1007067AD /* PhotoCarouselView.swift in Sources */,
 				E7AC19EA27E2B43D003B9407 /* PasswordField.swift in Sources */,
@@ -317,7 +321,7 @@
 				E7AC1A0627E409D6003B9407 /* LoginFields.swift in Sources */,
 				E7AC19E227E2A15A003B9407 /* LoginViewModel.swift in Sources */,
 				E7AC19E027E2A14B003B9407 /* LoginView.swift in Sources */,
-				E74AA63D27E5152300733319 /* Photo.swift in Sources */,
+				E74AA63D27E5152300733319 /* StoredPhoto.swift in Sources */,
 				E7AC19ED27E2B4C6003B9407 /* TextFieldModifier.swift in Sources */,
 				E7AC19F527E3D30D003B9407 /* RegisterView.swift in Sources */,
 				E7AC19D227E29D13003B9407 /* ContentView.swift in Sources */,

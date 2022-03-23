@@ -10,18 +10,13 @@ import SwiftUI
 import Combine
 
 class GalleryViewModel: ObservableObject {
-    @Published var photos: [Photo] =
-    [Photo(image:UIImage(named: "1")!),
-                                      Photo(image:UIImage(named: "2")!),
-                                      Photo(image:UIImage(named: "3")!),
-                                      Photo(image:UIImage(named: "4")!),
-                                      Photo(image:UIImage(named: "5")!)]
+    @Published var photos: [Photo] = []
     @Published var shouldShowImagePicker: Bool = false
     @Published var shouldShowDialog: Bool = false
     @Published var shouldShowCarouselView: Bool = false
     @Published var pickerSourceType: UIImagePickerController.SourceType = .photoLibrary
     
-    @Published var selectedPhoto: Photo? 
+    @Published var selectedPhoto: Photo?
     
     var photoColumnGrid = [GridItem(.flexible(), spacing: 2),
                            GridItem(.flexible(), spacing: 2),
@@ -30,7 +25,7 @@ class GalleryViewModel: ObservableObject {
     private let storage = Storage.shared
     
     init() {
-//        getPhotos()
+        getPhotos()
         
         $selectedPhoto
             .receive(on: RunLoop.main)
@@ -40,13 +35,14 @@ class GalleryViewModel: ObservableObject {
     
     func getPhotos() {
         guard let photos = storage.photos,
-        let decoded = try? JSONDecoder().decode([Photo].self, from: photos)
+        let decoded = try? JSONDecoder().decode([StoredPhoto].self, from: photos)
         else { return }
-        self.photos = decoded
+        self.photos = decoded.map { Photo(image: UIImage(data: $0.image) ?? UIImage(), description: $0.description)}
     }
     
     func savePhotos() {
-        guard let encoded = try? JSONEncoder().encode(photos) else { return }
+        let storedPhotos = photos.map { StoredPhoto(id: $0.id, image: $0.image.pngData() ?? Data(), description: $0.description)}
+        guard let encoded = try? JSONEncoder().encode(storedPhotos) else { return }
         storage.photos = encoded
     }
     
@@ -55,8 +51,7 @@ class GalleryViewModel: ObservableObject {
     }
     
     func addImage(_ image: UIImage) {
-        let photo = Photo(image: image)
+        let photo = Photo(image: image, description: "")
         photos.append(photo)
-        savePhotos()
     }
 }

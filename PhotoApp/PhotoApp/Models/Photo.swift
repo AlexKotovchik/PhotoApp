@@ -2,20 +2,20 @@
 //  Photo.swift
 //  PhotoApp
 //
-//  Created by AlexKotov on 18.03.22.
+//  Created by AlexKotov on 23.03.22.
 //
 
 import Foundation
 import UIKit
 
-struct Photo: Identifiable, Codable {
+class Photo: ObservableObject, Identifiable {
     var id: String
-    var image: Data
-    var description: String
+    var image: UIImage
+    @Published var description: String
     
-    init(image: UIImage, description: String = "description") {
+    init(image: UIImage, description: String) {
         self.id = UUID().uuidString
-        self.image = image.pngData() ?? Data()
+        self.image = image
         self.description = description
     }
 }

@@ -19,16 +19,13 @@ struct GalleryView: View {
                     VStack {
                         LazyVGrid(columns: vm.photoColumnGrid, alignment: .leading, spacing: 2) {
                             ForEach(vm.photos) { photo in
-                                if let imageData = photo.image,
-                                   let uiimage = UIImage(data: imageData) {
-                                    Image(uiImage: uiimage)
-                                        .resizable()
-                                        .aspectRatio(1, contentMode: .fill)
-                                        .clipped()
-                                        .onTapGesture {
-                                            vm.selectedPhoto = photo
-                                        }
-                                }
+                                Image(uiImage: photo.image)
+                                    .resizable()
+                                    .aspectRatio(1, contentMode: .fill)
+                                    .clipped()
+                                    .onTapGesture {
+                                        vm.selectedPhoto = photo
+                                    }
                             }
                         }
                     }
@@ -43,9 +40,14 @@ struct GalleryView: View {
                 .frame(maxWidth: .infinity)
                 .background(Color.gray)
                 
-                NavigationLink(destination: PhotoCarouselView(photos: vm.photos, selectedPhoto: vm.selectedPhoto ?? Photo(image: UIImage())), isActive: $vm.shouldShowCarouselView) {
-                    EmptyView()
+                if let selectedPhoto = vm.selectedPhoto {
+                    NavigationLink(destination: PhotoCarouselView(photos: vm.photos, selectedPhoto: selectedPhoto), isActive: $vm.shouldShowCarouselView) {
+                        EmptyView()
+                    }
                 }
+            }
+            .onDisappear {
+                vm.savePhotos()
             }
             .fullScreenCover(isPresented: $vm.shouldShowImagePicker) {
                 ImagePicker(sourceType: vm.pickerSourceType) { image in
@@ -67,6 +69,7 @@ struct GalleryView: View {
             
         }
         .accentColor(Color.backButtonForeground)
+        
     }
     
     init() {

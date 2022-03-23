@@ -15,17 +15,7 @@ struct PhotoCarouselView: View {
         GeometryReader { proxy in
         TabView {
             ForEach(vm.photos) { photo in
-                VStack {
-                    Image(uiImage: UIImage(data: photo.image) ?? UIImage())
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: proxy.size.width, height: proxy.size.width)
-                        .clipped()
-                    TextEditor(text: $vm.selectedPhoto.description) .multilineTextAlignment(.center)
-                        .lineLimit(3)
-                        .padding()
-                    Spacer()
-                }
+                PhotoView(photo: photo, proxy: proxy)
             }
         }
         .navigationBarTitle("", displayMode: .inline)
@@ -44,5 +34,41 @@ struct PhotoCarouselView: View {
 extension UIApplication {
     func endEditing() {
         sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+
+struct PhotoView: View {
+    @StateObject var photo: Photo
+    let proxy: GeometryProxy
+    
+    var body: some View {
+        VStack {
+            Image(uiImage: photo.image)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: proxy.size.width, height: proxy.size.height / 2)
+                .clipped()
+            ZStack(alignment: .leading) {
+                if photo.description.isEmpty {
+                    VStack {
+                        HStack {
+                            Spacer()
+                            Text("Tap to add comment")
+                                .font(.system(size: 24))
+                                .foregroundColor(.gray)
+                            Spacer()
+                        }
+                        Spacer()
+                    }
+                }
+                TextEditor(text: $photo.description)
+                    .multilineTextAlignment(.center)
+                    .opacity(photo.description.isEmpty ? 0.25 : 1)
+                    .font(.system(size: 24))
+                    .foregroundColor(.black)
+                    .accentColor(.black)
+            }
+            Spacer()
+        }
     }
 }
