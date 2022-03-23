@@ -56,6 +56,7 @@ struct PhotoView: View {
                             Text("Tap to add comment")
                                 .font(.system(size: 24))
                                 .foregroundColor(.gray)
+                                .padding(.top, 8)
                             Spacer()
                         }
                         Spacer()
