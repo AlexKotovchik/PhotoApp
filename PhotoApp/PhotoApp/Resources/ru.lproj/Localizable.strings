@@ -9,11 +9,13 @@
 // MARK: - Placeholders
 "username_ph"        = "Имя пользователя";
 "password_ph"        = "Пароль";
+"comment_ph"         = "Комментарий";
 
 // MARK: - Buttons
 "login_btn"          = "Войти";
 "register_btn"       = "Зарегистрироваться";
 "ok_btn"             = "Супер";
+"add_image_btn"      = "Добавить фото";
 
 // MARK: - Labels
 "account_lbl"        = "У вас нет аккаунта?";
@@ -25,8 +27,14 @@
 
 // MARK: - Titles
 "register_view_title"           = "Регистрация";
+"gallery_view_title"            = "Мои фотографии";
 
 // MARK: - Errors
 "password_length_error"         = "Пароль должен быть не менее 8 знаков в длину";
 "user_exists_error"             = "Пользователь уже существет. Пожалуйста попробуйте ввести другое имя";
 "wrong_login_error"             = "Неправильный логин или пароль";
+
+// MARK: - Confirmation dialog
+"photo_cd_title"                = "Выберите фото из";
+"photo_cd_gallery_btn"          = "Галерея";
+"photo_cd_camera_btn"           = "Камера";

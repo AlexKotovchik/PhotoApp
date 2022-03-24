@@ -13,24 +13,28 @@ class GalleryViewModel: ObservableObject {
     @Published var photos: [Photo] = []
     @Published var shouldShowImagePicker: Bool = false
     @Published var shouldShowDialog: Bool = false
-    @Published var shouldShowCarouselView: Bool = false
+//    @Published var shouldShowCarouselView: Bool = false
     @Published var pickerSourceType: UIImagePickerController.SourceType = .photoLibrary
-    
-    @Published var selectedPhoto: Photo?
+//    @Published var selectedPhoto: Photo?
+//    @Published var selectedIndex: Int = 0
     
     var photoColumnGrid = [GridItem(.flexible(), spacing: 2),
                            GridItem(.flexible(), spacing: 2),
                            GridItem(.flexible(), spacing: 2)]
     
     private let storage = Storage.shared
+    private var cancellables = Set<AnyCancellable>()
     
     init() {
         getPhotos()
         
-        $selectedPhoto
-            .receive(on: RunLoop.main)
-            .map { $0 != nil }
-            .assign(to: &$shouldShowCarouselView)
+//        $selectedPhoto
+//            .receive(on: RunLoop.main)
+//            .sink { photo in
+//                guard let photo = photo else { return }
+//                self.selectedIndex = self.photos.firstIndex(of: photo) ?? 0
+//            }
+//            .store(in: &cancellables)
     }
     
     func getPhotos() {

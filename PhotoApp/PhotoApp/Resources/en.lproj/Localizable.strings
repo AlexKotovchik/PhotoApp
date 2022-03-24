@@ -9,11 +9,13 @@
 // MARK: - Placeholders
 "username_ph"        = "User name";
 "password_ph"        = "Password";
+"comment_ph"         = "Tap to add comment";
 
 // MARK: - Buttons
 "login_btn"          = "Login";
 "register_btn"       = "Register";
 "ok_btn"             = "OK";
+"add_image_btn"      = "Add image";
 
 // MARK: - Labels
 "account_lbl"        = "Don't have an account?";
@@ -25,8 +27,15 @@
 
 // MARK: - Titles
 "register_view_title"           = "Register User";
+"gallery_view_title"            = "My photos";
 
 // MARK: - Errors
 "password_length_error"         = "Password should be not less than 8 characters";
 "user_exists_error"             = "User name already exists. Please try with another one.";
 "wrong_login_error"             = "Wrong login or password";
+
+// MARK: - Confirmation dialog
+"photo_cd_title"                = "Choose photo from";
+"photo_cd_gallery_btn"          = "Gallery";
+"photo_cd_camera_btn"           = "Camera";
+

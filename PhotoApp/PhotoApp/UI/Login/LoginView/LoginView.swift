@@ -39,7 +39,7 @@ struct LoginView: View {
                             Spacer()
                             Text("account_lbl".localized)
                                 .foregroundColor(Color.textFieldForeground)
-                            NavigationLink(destination: RegisterView(shouldShowRegisterView: $vm.shouldShowRegisterView), isActive: $vm.shouldShowRegisterView) {
+                            NavigationLink(destination: RegisterView(shouldShowRegisterView: $vm.shouldShowRegisterView, isAuthenticated: $viewModel.isAuthenticated), isActive: $vm.shouldShowRegisterView) {
                                 Text("register_lbl".localized)
                                     .foregroundColor(.linkColorForeground)
                             }

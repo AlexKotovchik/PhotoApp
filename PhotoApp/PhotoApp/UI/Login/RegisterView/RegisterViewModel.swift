@@ -13,6 +13,7 @@ import Security
 class RegisterViewModel: ObservableObject {
     @Published var username: String = ""
     @Published var password: String = ""
+    @Binding var isAuthenticated: Bool
     
     @Published var registerButtonIsActive: Bool = false
     @Published var shouldShowRegistrationAlert: Bool = false
@@ -24,8 +25,9 @@ class RegisterViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     private let storage = Storage.shared
     
-    init(shouldShowRegisterView: Binding<Bool>) {
+    init(shouldShowRegisterView: Binding<Bool>, isAuthenticated: Binding<Bool>) {
         _shouldShowRegisterView = shouldShowRegisterView
+        _isAuthenticated = isAuthenticated
         
         $username
             .receive(on: RunLoop.main)
@@ -59,9 +61,8 @@ class RegisterViewModel: ObservableObject {
             kSecValueData as String: password,
         ]
 
-        // Add user
         if SecItemAdd(attributes as CFDictionary, nil) == noErr {
-            print("User saved successfully in the keychain")
+            debugPrint("User saved successfully in the keychain")
             shouldShowRegistrationAlert = true
         } else {
             authenticationError = "user_exists_error".localized
@@ -70,6 +71,7 @@ class RegisterViewModel: ObservableObject {
     
     func finishRegistration() {
         storage.isAuthenticated = true
-        shouldShowRegisterView = false
+        isAuthenticated = true
+//        shouldShowRegisterView = false
     }
 }

@@ -10,10 +10,11 @@ import SwiftUI
 
 class PhotoCarouselViewModel: ObservableObject {
     @Published var photos: [Photo] = []
-    @Published var selectedPhoto: Photo
+//    @Published var selectedPhoto: Photo
+    @Published var selectedID: String
     
-    init(photos: [Photo], selectedPhoto: Photo) {
+    init(photos: [Photo], selectedID: String) {
         self.photos = photos
-        self.selectedPhoto = selectedPhoto
+        self.selectedID = selectedID
     }
 }

@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct GalleryView: View {
-    @ObservedObject var vm: GalleryViewModel
+    @StateObject var vm = GalleryViewModel()
     @EnvironmentObject var viewModel: ContentViewModel
     
     var body: some View {
@@ -19,7 +19,7 @@ struct GalleryView: View {
                     VStack {
                         LazyVGrid(columns: vm.photoColumnGrid, alignment: .leading, spacing: 2) {
                             ForEach(vm.photos) { photo in
-                                NavigationLink(destination: PhotoCarouselView(photos: vm.photos, selectedPhoto: photo)) {
+                                NavigationLink(destination:  PhotoCarouselView(photos: vm.photos, selectedID: photo.id)) {
                                     Image(uiImage: photo.image)
                                         .resizable()
                                         .aspectRatio(1, contentMode: .fill)
@@ -37,7 +37,7 @@ struct GalleryView: View {
                 Button {
                     vm.shouldShowDialog = true
                 } label: {
-                    Text("Add image")
+                    Text("add_image_btn".localized)
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
@@ -57,17 +57,17 @@ struct GalleryView: View {
                     vm.addImage(image)
                 }
             }
-            .confirmationDialog("Choose photo from", isPresented: $vm.shouldShowDialog, actions: {
-                Button("Gallery", role: .none) {
+            .confirmationDialog("photo_cd_title".localized, isPresented: $vm.shouldShowDialog, actions: {
+                Button("photo_cd_gallery_btn".localized, role: .none) {
                     vm.pickerSourceType = .photoLibrary
                     vm.shouldShowImagePicker = true
                 }
-                Button("Camera", role: .none) {
+                Button("photo_cd_camera_btn".localized, role: .none) {
                     vm.pickerSourceType = .camera
                     vm.shouldShowImagePicker = true
                 }
             })
-            .navigationBarTitle("My photos")
+            .navigationBarTitle("gallery_view_title".localized)
             .navigationBarItems(trailing: logoutButton)
             
         }
@@ -76,7 +76,7 @@ struct GalleryView: View {
     }
     
     init() {
-        self.vm = GalleryViewModel()
+//        self.vm = GalleryViewModel()
     }
 }
 

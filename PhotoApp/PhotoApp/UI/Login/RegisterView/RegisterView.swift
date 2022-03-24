@@ -48,7 +48,7 @@ struct RegisterView: View {
         .navigationTitle("register_view_title")
     }
     
-    init(shouldShowRegisterView: Binding<Bool>) {
-        self.vm = RegisterViewModel(shouldShowRegisterView: shouldShowRegisterView)
+    init(shouldShowRegisterView: Binding<Bool>, isAuthenticated: Binding<Bool>) {
+        self.vm = RegisterViewModel(shouldShowRegisterView: shouldShowRegisterView, isAuthenticated: isAuthenticated)
     }
 }

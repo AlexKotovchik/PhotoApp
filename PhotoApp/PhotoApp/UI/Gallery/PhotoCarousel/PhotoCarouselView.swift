@@ -13,9 +13,11 @@ struct PhotoCarouselView: View {
     
     var body: some View {
         GeometryReader { proxy in
-        TabView {
-            ForEach(vm.photos) { photo in
-                PhotoView(photo: photo, proxy: proxy)
+            TabView(selection: $vm.selectedID) {
+                ForEach(vm.photos) { photo in
+                    PhotoView(photo: photo, proxy: proxy)
+                        .id(photo.id)
+                }
             }
         }
         .navigationBarTitle("", displayMode: .inline)
@@ -24,10 +26,9 @@ struct PhotoCarouselView: View {
             UIApplication.shared.endEditing()
         }
     }
-    }
     
-    init(photos: [Photo], selectedPhoto: Photo) {
-        self.vm = PhotoCarouselViewModel(photos: photos, selectedPhoto: selectedPhoto)
+    init(photos: [Photo], selectedID: String) {
+        self.vm = PhotoCarouselViewModel(photos: photos, selectedID: selectedID)
     }
 }
 
@@ -53,7 +54,7 @@ struct PhotoView: View {
                     VStack {
                         HStack {
                             Spacer()
-                            Text("Tap to add comment")
+                            Text("comment_ph".localized)
                                 .font(.system(size: 24))
                                 .foregroundColor(.gray)
                                 .padding(.top, 8)
