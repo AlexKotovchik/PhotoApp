@@ -15,10 +15,11 @@ class Photo: ObservableObject, Identifiable, Equatable {
     
     var id: String
     var image: UIImage
+    var date: Date = Date()
     @Published var description: String
     
-    init(image: UIImage, description: String) {
-        self.id = UUID().uuidString
+    init(id: String = UUID().uuidString, image: UIImage, description: String) {
+        self.id = id
         self.image = image
         self.description = description
     }

@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  PhotoApp
+
+  Created by AlexKotov on 28.03.22.
+  
+*/
+
+"NSCameraUsageDescription" = "We need to access your camera to take photos.";

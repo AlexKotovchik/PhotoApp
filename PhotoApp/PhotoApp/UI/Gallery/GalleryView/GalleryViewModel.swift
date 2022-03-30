@@ -5,6 +5,7 @@
 //  Created by AlexKotov on 18.03.22.
 //
 
+import AVFoundation
 import Foundation
 import SwiftUI
 import Combine
@@ -13,10 +14,8 @@ class GalleryViewModel: ObservableObject {
     @Published var photos: [Photo] = []
     @Published var shouldShowImagePicker: Bool = false
     @Published var shouldShowDialog: Bool = false
-//    @Published var shouldShowCarouselView: Bool = false
+    @Published var shouldShowCameraAccessAlert: Bool = false
     @Published var pickerSourceType: UIImagePickerController.SourceType = .photoLibrary
-//    @Published var selectedPhoto: Photo?
-//    @Published var selectedIndex: Int = 0
     
     var photoColumnGrid = [GridItem(.flexible(), spacing: 2),
                            GridItem(.flexible(), spacing: 2),
@@ -26,28 +25,8 @@ class GalleryViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     init() {
-        getPhotos()
+        self.photos = LocalFileManager.shared.getPhotos()
         
-//        $selectedPhoto
-//            .receive(on: RunLoop.main)
-//            .sink { photo in
-//                guard let photo = photo else { return }
-//                self.selectedIndex = self.photos.firstIndex(of: photo) ?? 0
-//            }
-//            .store(in: &cancellables)
-    }
-    
-    func getPhotos() {
-        guard let photos = storage.photos,
-        let decoded = try? JSONDecoder().decode([StoredPhoto].self, from: photos)
-        else { return }
-        self.photos = decoded.map { Photo(image: UIImage(data: $0.image) ?? UIImage(), description: $0.description)}
-    }
-    
-    func savePhotos() {
-        let storedPhotos = photos.map { StoredPhoto(id: $0.id, image: $0.image.pngData() ?? Data(), description: $0.description)}
-        guard let encoded = try? JSONEncoder().encode(storedPhotos) else { return }
-        storage.photos = encoded
     }
     
     func logOut() {
@@ -56,6 +35,42 @@ class GalleryViewModel: ObservableObject {
     
     func addImage(_ image: UIImage) {
         let photo = Photo(image: image, description: "")
+        LocalFileManager.shared.savePhoto(photo)
         photos.append(photo)
+    }
+    
+    func removePhoto(_ photo: Photo) {
+        guard let index = photos.firstIndex(of: photo) else { return }
+        photos.remove(at: index)
+        LocalFileManager.shared.deletePhoto(photo)
+    }
+    
+    func openCamera() {
+        pickerSourceType = .camera
+        shouldShowImagePicker = true
+    }
+    
+    func openGallery() {
+        pickerSourceType = .photoLibrary
+        shouldShowImagePicker = true
+    }
+    
+    func checkCameraAccess() {
+        switch AVCaptureDevice.authorizationStatus(for: .video) {
+        case .authorized:
+            openCamera()
+        case .denied:
+            shouldShowCameraAccessAlert = true
+        case .restricted:
+            ()
+        case .notDetermined:
+            AVCaptureDevice.requestAccess(for: .video) { success in
+                if success {
+                    self.openCamera()
+                } else {
+                    debugPrint("Permission denied")
+                }
+            }
+        }
     }
 }

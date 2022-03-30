@@ -11,11 +11,13 @@ import UIKit
 struct StoredPhoto: Identifiable, Codable {
     var id: String
     var image: Data
+    var date: Date
     var description: String
     
-    init(id: String, image: Data, description: String) {
+    init(id: String, image: Data, date: Date, description: String) {
         self.id = id
         self.image = image
+        self.date = date
         self.description = description
     }
 }

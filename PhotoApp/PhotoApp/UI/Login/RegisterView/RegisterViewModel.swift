@@ -64,6 +64,7 @@ class RegisterViewModel: ObservableObject {
         if SecItemAdd(attributes as CFDictionary, nil) == noErr {
             debugPrint("User saved successfully in the keychain")
             shouldShowRegistrationAlert = true
+            storage.user = username
         } else {
             authenticationError = "user_exists_error".localized
         }

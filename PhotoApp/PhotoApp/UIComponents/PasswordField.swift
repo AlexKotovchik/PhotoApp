@@ -16,11 +16,15 @@ struct PasswordField: View {
         HStack {
             ZStack {
                 Group {
-                    TextField("password_ph".localized , text: $password)
-                        .opacity(shouldShowPassword ? 1 : 0)
                     SecureField("password_ph".localized , text: $password)
                         .opacity(shouldShowPassword ? 0 : 1)
+                    TextField("password_ph".localized , text: $password)
+                        .opacity(shouldShowPassword ? 1 : 0)
+                    
                 }
+//                .onReceive(password.publisher.collect()) {
+//                        self.password = String($0.prefix(5))
+//                    }
                 .textFieldModifier()
                 
                 HStack {

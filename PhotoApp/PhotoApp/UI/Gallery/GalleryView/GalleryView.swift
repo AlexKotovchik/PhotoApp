@@ -9,74 +9,83 @@ import Foundation
 import SwiftUI
 
 struct GalleryView: View {
-    @StateObject var vm = GalleryViewModel()
+    @ObservedObject var vm = GalleryViewModel()
     @EnvironmentObject var viewModel: ContentViewModel
     
     var body: some View {
-        NavigationView {
-            VStack {
-                ScrollView(.vertical, showsIndicators: false) {
+        ZStack {
+            NavigationView {
+                GeometryReader { proxy in
                     VStack {
-                        LazyVGrid(columns: vm.photoColumnGrid, alignment: .leading, spacing: 2) {
-                            ForEach(vm.photos) { photo in
-                                NavigationLink(destination:  PhotoCarouselView(photos: vm.photos, selectedID: photo.id)) {
-                                    Image(uiImage: photo.image)
-                                        .resizable()
-                                        .aspectRatio(1, contentMode: .fill)
-                                        .clipped()
-//                                        .onTapGesture {
-//                                            vm.selectedPhoto = photo
-//                                        }
+                        ScrollView(.vertical, showsIndicators: false) {
+                            VStack {
+                                LazyVGrid(columns: vm.photoColumnGrid, alignment: .leading, spacing: 2) {
+                                    ForEach(vm.photos) { photo in
+                                        NavigationLink(destination:  PhotoCarouselView(photos: vm.photos, selectedID: photo.id)) {
+                                            Image(uiImage: photo.image)
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fill)
+                                                .frame(width: (proxy.size.width - 4) / 3, height: (proxy.size.width - 4) / 3)
+                                                .clipped()
+                                                .contextMenu {
+                                                    Button(action: {
+                                                        vm.removePhoto(photo)
+                                                    }) {
+                                                        Text("delete_btn")
+                                                    }
+                                                }
+                                        }
+                                    }
                                 }
- 
                             }
                         }
+                        
+                        Button {
+                            vm.shouldShowDialog = true
+                        } label: {
+                            Text("add_image_btn".localized)
+                        }
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.gray)
+                        
                     }
                 }
                 
-                Button {
-                    vm.shouldShowDialog = true
-                } label: {
-                    Text("add_image_btn".localized)
+                .fullScreenCover(isPresented: $vm.shouldShowImagePicker) {
+                    ImagePicker(sourceType: vm.pickerSourceType) { image in
+                        vm.addImage(image)
+                    }
                 }
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(Color.gray)
+                .confirmationDialog("photo_cd_title".localized, isPresented: $vm.shouldShowDialog, actions: {
+                    Button("photo_cd_gallery_btn".localized, role: .none) {
+                        vm.openGallery()
+                    }
+                    Button("photo_cd_camera_btn".localized, role: .none) {
+                        vm.checkCameraAccess()
+                    }
+                })
+                .navigationBarTitle("gallery_view_title".localized)
+                .navigationBarItems(trailing: logoutButton)
                 
-//                if let selectedPhoto = vm.selectedPhoto {
-//                    NavigationLink(destination: PhotoCarouselView(photos: vm.photos, selectedPhoto: selectedPhoto), isActive: $vm.shouldShowCarouselView) {
-//                        EmptyView()
-//                    }
-//                }
             }
-            .onDisappear {
-                vm.savePhotos()
-            }
-            .fullScreenCover(isPresented: $vm.shouldShowImagePicker) {
-                ImagePicker(sourceType: vm.pickerSourceType) { image in
-                    vm.addImage(image)
-                }
-            }
-            .confirmationDialog("photo_cd_title".localized, isPresented: $vm.shouldShowDialog, actions: {
-                Button("photo_cd_gallery_btn".localized, role: .none) {
-                    vm.pickerSourceType = .photoLibrary
-                    vm.shouldShowImagePicker = true
-                }
-                Button("photo_cd_camera_btn".localized, role: .none) {
-                    vm.pickerSourceType = .camera
-                    vm.shouldShowImagePicker = true
-                }
-            })
-            .navigationBarTitle("gallery_view_title".localized)
-            .navigationBarItems(trailing: logoutButton)
+            .accentColor(Color.backButtonForeground)
             
+            Spacer()
+                .alert(isPresented: $vm.shouldShowCameraAccessAlert, content: {
+                    Alert(title: Text("camera_access_alert_title".localized),
+                          message: Text("camera_access_alert_message".localized),
+                          primaryButton: .default(Text("settings_btn".localized), action: {
+                        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!,
+                                                  options: [:], completionHandler: nil)
+                    }),
+                          secondaryButton: .cancel() )
+                })
         }
-        .accentColor(Color.backButtonForeground)
-        
     }
     
     init() {
-//        self.vm = GalleryViewModel()
+        self.vm = GalleryViewModel()
     }
 }
 
@@ -87,7 +96,7 @@ extension GalleryView {
                 viewModel.isAuthenticated = false
                 vm.logOut()
             }) {
-                Text("Logout")
+                Text("logout_btn")
             }
         } label: {
             Image(systemName: "arrow.left.circle.fill")
@@ -95,6 +104,5 @@ extension GalleryView {
                 .foregroundColor(Color.backButtonForeground)
         }
     }
-    
     
 }

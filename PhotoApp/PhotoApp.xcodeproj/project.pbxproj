@@ -10,6 +10,8 @@
 		E737E02D27E7E6B1007067AD /* PhotoCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E737E02C27E7E6B1007067AD /* PhotoCarouselView.swift */; };
 		E737E02F27E7E6C6007067AD /* PhotoCarouselViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E737E02E27E7E6C6007067AD /* PhotoCarouselViewModel.swift */; };
 		E737E03B27EAA417007067AD /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E737E03A27EAA417007067AD /* Photo.swift */; };
+		E737E03D27ED1DD6007067AD /* LocalFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E737E03C27ED1DD5007067AD /* LocalFileManager.swift */; };
+		E74581B127F24EBB00C08993 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E74581B327F24EBB00C08993 /* InfoPlist.strings */; };
 		E74AA63727E5068D00733319 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74AA63627E5068D00733319 /* GalleryView.swift */; };
 		E74AA63A27E506A500733319 /* GalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74AA63927E506A500733319 /* GalleryViewModel.swift */; };
 		E74AA63D27E5152300733319 /* StoredPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74AA63C27E5152300733319 /* StoredPhoto.swift */; };
@@ -36,6 +38,9 @@
 		E737E02C27E7E6B1007067AD /* PhotoCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCarouselView.swift; sourceTree = "<group>"; };
 		E737E02E27E7E6C6007067AD /* PhotoCarouselViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCarouselViewModel.swift; sourceTree = "<group>"; };
 		E737E03A27EAA417007067AD /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		E737E03C27ED1DD5007067AD /* LocalFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileManager.swift; sourceTree = "<group>"; };
+		E74581B227F24EBB00C08993 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E74581B427F24EBC00C08993 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E74AA63627E5068D00733319 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
 		E74AA63927E506A500733319 /* GalleryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewModel.swift; sourceTree = "<group>"; };
 		E74AA63C27E5152300733319 /* StoredPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredPhoto.swift; sourceTree = "<group>"; };
@@ -111,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				E787F7E727E52F0500540F06 /* Storage.swift */,
+				E737E03C27ED1DD5007067AD /* LocalFileManager.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -231,6 +237,7 @@
 		E7AC19FA27E3F94C003B9407 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E74581B327F24EBB00C08993 /* InfoPlist.strings */,
 				E7AC19D327E29D15003B9407 /* Assets.xcassets */,
 				E7AC1A0327E40447003B9407 /* Localizable.strings */,
 			);
@@ -297,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7AC19D727E29D15003B9407 /* Preview Assets.xcassets in Resources */,
+				E74581B127F24EBB00C08993 /* InfoPlist.strings in Resources */,
 				E7AC1A0127E40447003B9407 /* Localizable.strings in Resources */,
 				E7AC19D427E29D15003B9407 /* Assets.xcassets in Resources */,
 			);
@@ -329,12 +337,22 @@
 				E737E02F27E7E6C6007067AD /* PhotoCarouselViewModel.swift in Sources */,
 				E7AC19F727E3D36B003B9407 /* RegisterViewModel.swift in Sources */,
 				E7AC19D027E29D13003B9407 /* PhotoApp.swift in Sources */,
+				E737E03D27ED1DD6007067AD /* LocalFileManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		E74581B327F24EBB00C08993 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E74581B227F24EBB00C08993 /* en */,
+				E74581B427F24EBC00C08993 /* ru */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		E7AC1A0327E40447003B9407 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -475,6 +493,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need to access your camera to take photos.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need to access your photo library to make the same photo library, lol.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -506,6 +525,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need to access your camera to take photos.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need to access your photo library to make the same photo library, lol.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -8,8 +8,8 @@
 import Foundation
 
 struct StorageKeys {
-    static let photos = "photos"
     static let authentication = "authentication"
+    static let user = "user"
 }
 
 class Storage: ObservableObject {
@@ -18,21 +18,21 @@ class Storage: ObservableObject {
     init() {
     }
     
-    var photos: Data? {
-        set {
-            UserDefaults.standard.set(newValue, forKey: StorageKeys.photos)
-        }
-        get {
-            return UserDefaults.standard.data(forKey: StorageKeys.photos)
-        }
-    }
-    
     var isAuthenticated: Bool {
         set {
             UserDefaults.standard.set(newValue, forKey: StorageKeys.authentication)
         }
         get {
             UserDefaults.standard.bool(forKey: StorageKeys.authentication)
+        }
+    }
+    
+    var user: String {
+        set {
+            UserDefaults.standard.set(newValue, forKey: StorageKeys.user)
+        }
+        get {
+            UserDefaults.standard.string(forKey: StorageKeys.user) ?? ""
         }
     }
 }

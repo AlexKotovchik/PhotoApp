@@ -16,6 +16,9 @@
 "register_btn"       = "Register";
 "ok_btn"             = "OK";
 "add_image_btn"      = "Add image";
+"settings_btn"       = "Settings";
+"logout_btn"         = "Logout";
+"delete_btn"         = "Delete";
 
 // MARK: - Labels
 "account_lbl"        = "Don't have an account?";
@@ -24,6 +27,9 @@
 // MARK: - Alerts
 "register_alert_title"          = "Registered";
 "register_alert_message"        = "You have been registered successfully";
+"camera_access_alert_title"     = "Camera Access";
+"camera_access_alert_message"   = "The app doesn't have access to use your camera, please update your privacy settings.";
+
 
 // MARK: - Titles
 "register_view_title"           = "Register User";

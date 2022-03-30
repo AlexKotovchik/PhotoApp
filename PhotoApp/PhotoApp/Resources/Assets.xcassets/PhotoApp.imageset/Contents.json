@@ -1,15 +1,16 @@
 {
   "images" : [
     {
-      "filename" : "photo_2022-01-04 16.29.50.jpeg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "PhotoApp@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "PhotoApp@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

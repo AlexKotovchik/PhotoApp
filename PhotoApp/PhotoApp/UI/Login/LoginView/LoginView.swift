@@ -17,15 +17,21 @@ struct LoginView: View {
             GeometryReader { proxy in
                 ScrollView {
                     VStack {
+                        Image(uiImage: UIImage(named: "PhotoApp") ?? UIImage())
+                            .resizable()
+                            .scaledToFit()
+                            .padding(.horizontal, 32)
+                            .padding(.bottom)
+                        
                         LoginFields(username: $vm.username, password: $vm.password)
-                            .padding(.top, 100)
-                            .padding(.bottom, 48)
+                            .padding(.vertical, 48)
 
                         AcceptButton(title: "login_btn".localized,
                                      isActive: vm.loginButtonIsActive) {
                             vm.login(username: vm.username, password: vm.password) {
                                 viewModel.isAuthenticated = true
                                 Storage.shared.isAuthenticated = true
+                                Storage.shared.user = vm.username
                             }
                         }
                         
@@ -33,6 +39,7 @@ struct LoginView: View {
                             .foregroundColor(.errorForeground)
                             .font(.system(size: 14))
                             .multilineTextAlignment(.center)
+                            .frame(minHeight: 16)
                             .padding()
                         
                         HStack {

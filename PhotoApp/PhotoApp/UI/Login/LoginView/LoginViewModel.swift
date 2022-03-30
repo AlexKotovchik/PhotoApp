@@ -9,12 +9,16 @@ import Foundation
 import SwiftUI
 import Combine
 
-//TODO: Clear textfield when come back to view
 
 class LoginViewModel: ObservableObject {
     @Published var username: String = ""
-    @Published var password: String = ""
-    
+    @Published var password: String = "" {
+        didSet {
+            if password.count > 12  {
+                password = oldValue
+            }
+        }
+    }
     @Published var loginButtonIsActive: Bool = false
     @Published var shouldShowRegisterView: Bool = false
     
@@ -65,10 +69,10 @@ class LoginViewModel: ObservableObject {
                let pass = String(data: passwordData, encoding: .utf8),
                password == pass
             {
-                print("You logged in succesfully")
-                print(username)
-                print(password)
                 completion()
+            }
+            else {
+                authenticationError = "wrong_login_error".localized
             }
         } else {
             authenticationError = "wrong_login_error".localized
