@@ -27,10 +27,23 @@ class GalleryViewModel: ObservableObject {
     init() {
         self.photos = LocalFileManager.shared.getPhotos()
         
+//        $photos
+//            .receive(on: RunLoop.main)
+//            .sink { _ in
+//                self.savePhotos()
+//            }
+//            .store(in: &cancellables)
+        
     }
     
     func logOut() {
         storage.isAuthenticated = false
+    }
+    
+    func savePhotos() {
+        for photo in photos {
+            LocalFileManager.shared.savePhoto(photo)
+        }
     }
     
     func addImage(_ image: UIImage) {
@@ -43,6 +56,13 @@ class GalleryViewModel: ObservableObject {
         guard let index = photos.firstIndex(of: photo) else { return }
         photos.remove(at: index)
         LocalFileManager.shared.deletePhoto(photo)
+    }
+    
+    func resavePhotos() {
+        for photo in photos {
+            LocalFileManager.shared.deletePhoto(photo)
+            LocalFileManager.shared.savePhoto(photo)
+        }
     }
     
     func openCamera() {

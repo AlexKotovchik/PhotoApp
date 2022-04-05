@@ -47,7 +47,8 @@ struct GalleryView: View {
                         }
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color.gray)
+                        .background(Color.textFieldAccent)
+                        .foregroundColor(.addImageForeground)
                         
                     }
                 }
@@ -82,6 +83,7 @@ struct GalleryView: View {
                           secondaryButton: .cancel() )
                 })
         }
+
     }
     
     init() {

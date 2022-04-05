@@ -25,6 +25,10 @@ struct PhotoCarouselView: View {
         .onTapGesture {
             UIApplication.shared.endEditing()
         }
+        .onDisappear {
+            vm.resavePhotos()
+        }
+        
     }
     
     init(photos: [Photo], selectedID: String) {

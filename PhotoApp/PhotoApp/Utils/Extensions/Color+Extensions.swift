@@ -41,4 +41,5 @@ extension Color {
     static let viewBackground = Color("view_background_color")
     static let backButtonForeground = Color("back_button_color")
     static let errorForeground = Color("error_foreground_color")
+    static let addImageForeground = Color("add_image_foreground_color")
 }
