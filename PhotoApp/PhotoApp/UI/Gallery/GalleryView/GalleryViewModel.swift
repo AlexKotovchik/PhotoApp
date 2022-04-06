@@ -8,7 +8,7 @@
 import AVFoundation
 import Foundation
 import SwiftUI
-import Combine
+
 
 class GalleryViewModel: ObservableObject {
     @Published var photos: [Photo] = []
@@ -17,12 +17,14 @@ class GalleryViewModel: ObservableObject {
     @Published var shouldShowCameraAccessAlert: Bool = false
     @Published var pickerSourceType: UIImagePickerController.SourceType = .photoLibrary
     
+    @Published var shouldShowCarousel: Bool = false
+    @Published var selectedID: String?
+    
     var photoColumnGrid = [GridItem(.flexible(), spacing: 2),
                            GridItem(.flexible(), spacing: 2),
                            GridItem(.flexible(), spacing: 2)]
     
     private let storage = Storage.shared
-    private var cancellables = Set<AnyCancellable>()
     
     init() {
         self.photos = LocalFileManager.shared.getPhotos()

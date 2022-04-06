@@ -10,10 +10,6 @@ import UIKit
 import Combine
 
 class Photo: ObservableObject, Identifiable, Equatable {
-    static func == (lhs: Photo, rhs: Photo) -> Bool {
-        return lhs.id == rhs.id
-    }
-    
     var id: String
     var image: UIImage
     var date: Date
@@ -29,6 +25,7 @@ class Photo: ObservableObject, Identifiable, Equatable {
         
         $description
             .receive(on: RunLoop.main)
+            .dropFirst()
             .debounce(for: 1, scheduler: RunLoop.main)
             .sink { _ in
                 self.resave()
@@ -40,5 +37,9 @@ class Photo: ObservableObject, Identifiable, Equatable {
     func resave() {
         LocalFileManager.shared.deletePhoto(self)
         LocalFileManager.shared.savePhoto(self)
+    }
+    
+    static func == (lhs: Photo, rhs: Photo) -> Bool {
+        return lhs.id == rhs.id
     }
 }

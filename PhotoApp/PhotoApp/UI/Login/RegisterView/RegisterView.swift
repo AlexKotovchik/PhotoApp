@@ -46,6 +46,9 @@ struct RegisterView: View {
             }
         }
         .navigationTitle("register_view_title")
+        .onTapGesture {
+            UIApplication.shared.endEditing()
+        }
     }
     
     init(shouldShowRegisterView: Binding<Bool>, isAuthenticated: Binding<Bool>) {

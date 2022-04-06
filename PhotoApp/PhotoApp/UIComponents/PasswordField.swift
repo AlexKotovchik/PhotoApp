@@ -22,9 +22,6 @@ struct PasswordField: View {
                         .opacity(shouldShowPassword ? 1 : 0)
                     
                 }
-//                .onReceive(password.publisher.collect()) {
-//                        self.password = String($0.prefix(5))
-//                    }
                 .textFieldModifier()
                 
                 HStack {

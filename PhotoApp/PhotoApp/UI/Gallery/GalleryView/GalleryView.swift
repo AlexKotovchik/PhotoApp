@@ -10,22 +10,20 @@ import SwiftUI
 
 struct GalleryView: View {
     @ObservedObject var vm = GalleryViewModel()
-    @EnvironmentObject var viewModel: ContentViewModel
+    @EnvironmentObject var viewModel: MainViewModel
     
     var body: some View {
-        ZStack {
-            NavigationView {
-                GeometryReader { proxy in
-                    photoGrid(proxy: proxy)
-                }
-                .navigationBarTitle("gallery_view_title".localized)
-                .navigationBarItems(leading: addImageButton, trailing: logoutButton)
+        NavigationView {
+            ZStack {
+                photoGrid
+                navigationLink
+                imagePickerView
+                cameraAccessAlert
             }
-            .accentColor(Color.backButtonForeground)
-            
-            imagePickerView
-            cameraAccessAlert
+            .navigationBarTitle("gallery_view_title".localized)
+            .navigationBarItems(leading: addImageButton, trailing: logoutButton)
         }
+        .accentColor(Color.backButtonForeground)
         .animation(.none)
     }
     
@@ -91,8 +89,16 @@ extension GalleryView {
             })
     }
     
-    func photoGrid(proxy: GeometryProxy) -> some View {
-        return AnyView(
+    var navigationLink: some View {
+        NavigationLink(isActive: $vm.shouldShowCarousel) {
+            PhotoCarouselView(photos: vm.photos, selectedID: vm.selectedID ?? "")
+        } label: {
+            EmptyView()
+        }
+    }
+    
+    var photoGrid: some View {
+        GeometryReader { proxy in
             ScrollView(.vertical, showsIndicators: false) {
                 LazyVGrid(columns: vm.photoColumnGrid, alignment: .leading, spacing: 2) {
                     ForEach(vm.photos) { photo in
@@ -100,18 +106,20 @@ extension GalleryView {
                     }
                 }
             }
-        )
+        }
     }
     
     func imageView(photo: Photo, proxy: GeometryProxy) -> some View {
         return AnyView(
-            NavigationLink(destination:  PhotoCarouselView(photos: vm.photos, selectedID: photo.id)) {
-                Image(uiImage: photo.image)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: (proxy.size.width - 4) / 3, height: (proxy.size.width - 4) / 3)
-                    .clipped()
-            }
+            Image(uiImage: photo.image)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: (proxy.size.width - 4) / 3, height: (proxy.size.width - 4) / 3)
+                .clipped()
+                .onTapGesture(perform: {
+                    vm.selectedID = photo.id
+                    vm.shouldShowCarousel = true
+                })
         )
     }
     

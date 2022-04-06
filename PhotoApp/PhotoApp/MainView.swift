@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-class ContentViewModel: ObservableObject {
+class MainViewModel: ObservableObject {
     @Published var isAuthenticated: Bool = Storage.shared.isAuthenticated
 }
 
-struct ContentView: View {
-    @StateObject var vm: ContentViewModel
+struct MainView: View {
+    @ObservedObject var vm: MainViewModel
     
     var body: some View {
         if vm.isAuthenticated {
@@ -25,8 +25,9 @@ struct ContentView: View {
     }
     
     init() {
-        let vm = StateObject(wrappedValue: ContentViewModel())
-        _vm = vm
+//        let vm = StateObject(wrappedValue: MainViewModel())
+//        _vm = vm
+        self.vm = MainViewModel()
     }
 }
 

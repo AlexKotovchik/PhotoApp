@@ -10,7 +10,7 @@ import SwiftUI
 
 struct LoginView: View {
     @ObservedObject var vm: LoginViewModel
-    @EnvironmentObject var viewModel: ContentViewModel
+    @EnvironmentObject var viewModel: MainViewModel
     
     var body: some View {
         NavigationView {
@@ -64,6 +64,9 @@ struct LoginView: View {
             .navigationBarTitle("")
         }
         .accentColor(Color.backButtonForeground)
+        .onTapGesture {
+            UIApplication.shared.endEditing()
+        }
     }
     
     init() {
