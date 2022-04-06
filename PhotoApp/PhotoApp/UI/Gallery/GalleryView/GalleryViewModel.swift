@@ -39,19 +39,6 @@ class GalleryViewModel: ObservableObject {
         photos.append(photo)
     }
     
-    func removePhoto(_ photo: Photo) {
-        guard let index = photos.firstIndex(of: photo) else { return }
-        photos.remove(at: index)
-        LocalFileManager.shared.deletePhoto(photo)
-    }
-    
-    func resavePhotos() {
-        for photo in photos {
-            LocalFileManager.shared.deletePhoto(photo)
-            LocalFileManager.shared.savePhoto(photo)
-        }
-    }
-    
     func openCamera() {
         pickerSourceType = .camera
         shouldShowImagePicker = true

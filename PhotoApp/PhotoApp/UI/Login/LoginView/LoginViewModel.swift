@@ -64,7 +64,7 @@ class LoginViewModel: ObservableObject {
 
         if SecItemCopyMatching(query as CFDictionary, &item) == noErr {
             if let existingItem = item as? [String: Any],
-               let username = existingItem[kSecAttrAccount as String] as? String,
+//               let username = existingItem[kSecAttrAccount as String] as? String,
                let passwordData = existingItem[kSecValueData as String] as? Data,
                let pass = String(data: passwordData, encoding: .utf8),
                password == pass

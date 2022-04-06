@@ -16,74 +16,17 @@ struct GalleryView: View {
         ZStack {
             NavigationView {
                 GeometryReader { proxy in
-                    VStack {
-                        ScrollView(.vertical, showsIndicators: false) {
-//                            VStack {
-                                LazyVGrid(columns: vm.photoColumnGrid, alignment: .leading, spacing: 2) {
-                                    ForEach(vm.photos) { photo in
-                                        NavigationLink(destination:  PhotoCarouselView(photos: vm.photos, selectedID: photo.id)) {
-                                            Image(uiImage: photo.image)
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fill)
-                                                .frame(width: (proxy.size.width - 4) / 3, height: (proxy.size.width - 4) / 3)
-                                                .clipped()
-                                                .contextMenu {
-                                                    Button(action: {
-                                                        vm.removePhoto(photo)
-                                                    }) {
-                                                        Text("delete_btn")
-                                                    }
-                                                }
-                                        }
-                                    }
-                                }
-//                            }
-                        }
-                        
-                        Button {
-                            vm.shouldShowDialog = true
-                        } label: {
-                            Text("add_image_btn".localized)
-                        }
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.textFieldAccent)
-                        .foregroundColor(.addImageForeground)
-                    }
+                    photoGrid(proxy: proxy)
                 }
-                
-                .fullScreenCover(isPresented: $vm.shouldShowImagePicker) {
-                    ImagePicker(sourceType: vm.pickerSourceType) { image in
-                        vm.addImage(image)
-                    }
-                }
-                .confirmationDialog("photo_cd_title".localized, isPresented: $vm.shouldShowDialog, actions: {
-                    Button("photo_cd_gallery_btn".localized, role: .none) {
-                        vm.openGallery()
-                    }
-                    Button("photo_cd_camera_btn".localized, role: .none) {
-                        vm.checkCameraAccess()
-                    }
-                })
                 .navigationBarTitle("gallery_view_title".localized)
-                .navigationBarItems(trailing: logoutButton)
-                
+                .navigationBarItems(leading: addImageButton, trailing: logoutButton)
             }
             .accentColor(Color.backButtonForeground)
             
-            Spacer()
-                .alert(isPresented: $vm.shouldShowCameraAccessAlert, content: {
-                    Alert(title: Text("camera_access_alert_title".localized),
-                          message: Text("camera_access_alert_message".localized),
-                          primaryButton: .default(Text("settings_btn".localized), action: {
-                        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!,
-                                                  options: [:], completionHandler: nil)
-                    }),
-                          secondaryButton: .cancel() )
-                })
+            imagePickerView
+            cameraAccessAlert
         }
         .animation(.none)
-
     }
     
     init() {
@@ -101,10 +44,75 @@ extension GalleryView {
                 Text("logout_btn")
             }
         } label: {
-            Image(systemName: "arrow.left.circle.fill")
+            Image(systemName: "arrow.left")
                 .frame(width: 50, height: 50, alignment: .center)
-                .foregroundColor(Color.backButtonForeground)
+                .foregroundColor(.backButtonForeground)
         }
+    }
+    
+    var cameraAccessAlert: some View {
+        Spacer()
+            .alert(isPresented: $vm.shouldShowCameraAccessAlert, content: {
+                Alert(title: Text("camera_access_alert_title".localized),
+                      message: Text("camera_access_alert_message".localized),
+                      primaryButton: .default(Text("settings_btn".localized), action: {
+                    UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!,
+                                              options: [:], completionHandler: nil)
+                }),
+                      secondaryButton: .cancel() )
+            })
+    }
+    
+    var addImageButton: some View {
+        Button {
+            vm.shouldShowDialog = true
+        } label: {
+            Image(systemName: "plus")
+        }
+        .padding()
+        .frame(maxWidth: .infinity)
+        .foregroundColor(.backButtonForeground)
+    }
+    
+    var imagePickerView: some View {
+        Spacer()
+            .fullScreenCover(isPresented: $vm.shouldShowImagePicker) {
+                ImagePicker(sourceType: vm.pickerSourceType) { image in
+                    vm.addImage(image)
+                }
+            }
+            .confirmationDialog("photo_cd_title".localized, isPresented: $vm.shouldShowDialog, actions: {
+                Button("photo_cd_gallery_btn".localized, role: .none) {
+                    vm.openGallery()
+                }
+                Button("photo_cd_camera_btn".localized, role: .none) {
+                    vm.checkCameraAccess()
+                }
+            })
+    }
+    
+    func photoGrid(proxy: GeometryProxy) -> some View {
+        return AnyView(
+            ScrollView(.vertical, showsIndicators: false) {
+                LazyVGrid(columns: vm.photoColumnGrid, alignment: .leading, spacing: 2) {
+                    ForEach(vm.photos) { photo in
+                        imageView(photo: photo, proxy: proxy)
+                    }
+                }
+            }
+        )
+    }
+    
+    func imageView(photo: Photo, proxy: GeometryProxy) -> some View {
+        return AnyView(
+            NavigationLink(destination:  PhotoCarouselView(photos: vm.photos, selectedID: photo.id)) {
+                Image(uiImage: photo.image)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: (proxy.size.width - 4) / 3, height: (proxy.size.width - 4) / 3)
+                    .clipped()
+            }
+        )
     }
     
 }

@@ -73,6 +73,5 @@ class RegisterViewModel: ObservableObject {
     func finishRegistration() {
         storage.isAuthenticated = true
         isAuthenticated = true
-//        shouldShowRegisterView = false
     }
 }

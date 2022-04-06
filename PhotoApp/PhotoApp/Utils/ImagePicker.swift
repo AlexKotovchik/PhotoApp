@@ -86,6 +86,8 @@ extension UIImage {
             transform = transform.rotated(by: CGFloat.pi / -2)
         case .up, .upMirrored:
             break
+        @unknown default:
+            debugPrint("")
         }
 
         switch imageOrientation {
@@ -97,6 +99,8 @@ extension UIImage {
             transform.scaledBy(x: -1, y: 1)
         case .up, .down, .left, .right:
             break
+        @unknown default:
+            debugPrint("")
         }
 
         if let cgImage = self.cgImage, let colorSpace = cgImage.colorSpace,
