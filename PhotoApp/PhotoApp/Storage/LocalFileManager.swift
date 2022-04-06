@@ -20,7 +20,7 @@ class LocalFileManager {
         guard let data = try? JSONEncoder().encode(storedPhoto) else { return }
         
         let folderPath = folderPath()
-        let destinationURL: URL = folderPath.appendingPathComponent("\(storedPhoto.id)")
+        let destinationURL: URL = folderPath.appendingPathComponent("\(storedPhoto.date)")
         
         if !FileManager.default.fileExists(atPath: destinationURL.relativePath) {
             do {
@@ -48,7 +48,7 @@ class LocalFileManager {
                 guard
                       let storedPhoto = try? Data(contentsOf: photoUrl),
                       let decoded = try? JSONDecoder().decode(StoredPhoto.self, from: storedPhoto) else { return [] }
-                let photo = Photo(id: decoded.id, image: UIImage(data: decoded.image) ?? UIImage(), description: decoded.description)
+                let photo = Photo(id: decoded.id, image: UIImage(data: decoded.image) ?? UIImage(), date: decoded.date, description: decoded.description)
                 photos.append(photo)
             }
         } catch let error {
@@ -59,7 +59,7 @@ class LocalFileManager {
     
     func deletePhoto(_ photo: Photo) {
         let folderPath = folderPath()
-        let destinationURL: URL = folderPath.appendingPathComponent("\(photo.id)")
+        let destinationURL: URL = folderPath.appendingPathComponent("\(photo.date)")
         print(destinationURL)
         if FileManager.default.fileExists(atPath: destinationURL.relativePath) {
             do {

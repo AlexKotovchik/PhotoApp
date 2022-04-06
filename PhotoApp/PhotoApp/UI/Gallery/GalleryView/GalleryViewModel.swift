@@ -26,28 +26,15 @@ class GalleryViewModel: ObservableObject {
     
     init() {
         self.photos = LocalFileManager.shared.getPhotos()
-        
-//        $photos
-//            .receive(on: RunLoop.main)
-//            .sink { _ in
-//                self.savePhotos()
-//            }
-//            .store(in: &cancellables)
-        
+            .sorted { $0.date < $1.date}
     }
     
     func logOut() {
         storage.isAuthenticated = false
     }
     
-    func savePhotos() {
-        for photo in photos {
-            LocalFileManager.shared.savePhoto(photo)
-        }
-    }
-    
     func addImage(_ image: UIImage) {
-        let photo = Photo(image: image, description: "")
+        let photo = Photo(image: image, date: Date(), description: "")
         LocalFileManager.shared.savePhoto(photo)
         photos.append(photo)
     }
@@ -79,10 +66,8 @@ class GalleryViewModel: ObservableObject {
         switch AVCaptureDevice.authorizationStatus(for: .video) {
         case .authorized:
             openCamera()
-        case .denied:
+        case .denied, .restricted:
             shouldShowCameraAccessAlert = true
-        case .restricted:
-            ()
         case .notDetermined:
             AVCaptureDevice.requestAccess(for: .video) { success in
                 if success {
@@ -91,6 +76,8 @@ class GalleryViewModel: ObservableObject {
                     debugPrint("Permission denied")
                 }
             }
+        @unknown default:
+            print("unknown")
         }
     }
 }

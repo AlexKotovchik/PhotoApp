@@ -18,7 +18,7 @@ struct GalleryView: View {
                 GeometryReader { proxy in
                     VStack {
                         ScrollView(.vertical, showsIndicators: false) {
-                            VStack {
+//                            VStack {
                                 LazyVGrid(columns: vm.photoColumnGrid, alignment: .leading, spacing: 2) {
                                     ForEach(vm.photos) { photo in
                                         NavigationLink(destination:  PhotoCarouselView(photos: vm.photos, selectedID: photo.id)) {
@@ -37,7 +37,7 @@ struct GalleryView: View {
                                         }
                                     }
                                 }
-                            }
+//                            }
                         }
                         
                         Button {
@@ -49,7 +49,6 @@ struct GalleryView: View {
                         .frame(maxWidth: .infinity)
                         .background(Color.textFieldAccent)
                         .foregroundColor(.addImageForeground)
-                        
                     }
                 }
                 
@@ -83,6 +82,7 @@ struct GalleryView: View {
                           secondaryButton: .cancel() )
                 })
         }
+        .animation(.none)
 
     }
     

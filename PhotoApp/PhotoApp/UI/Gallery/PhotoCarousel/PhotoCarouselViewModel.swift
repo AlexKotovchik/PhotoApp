@@ -17,10 +17,4 @@ class PhotoCarouselViewModel: ObservableObject {
         self.selectedID = selectedID
     }
     
-    func resavePhotos() {
-        for photo in photos {
-            LocalFileManager.shared.deletePhoto(photo)
-            LocalFileManager.shared.savePhoto(photo)
-        }
-    }
 }
